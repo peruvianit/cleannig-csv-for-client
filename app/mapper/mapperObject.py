@@ -7,7 +7,7 @@ import datetime
 class MapperObject:
     def client_to_unico(self, count_item, client, file_csv):
         date_now =f"{datetime.datetime.now():%d/%m/%Y}"
-        unico = Unico(
+        unico = Unico(  str(file_csv).upper().replace('.CSV', ''),
                         count_item,
                         int(client['bimestre_fatturazione'][2:]),
                         None,

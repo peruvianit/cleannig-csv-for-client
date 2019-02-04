@@ -5,7 +5,8 @@ import csv
 
 class Unico:
     def __init__(self,
-                 id,
+                 block,
+                 row,
                  anno,
                  numero,
                  codice_fiscale,
@@ -41,7 +42,8 @@ class Unico:
                  motivazione_3,
                  note_margine
                  ):
-        self.id = int(id)
+        self.block = block
+        self.row = int(row)
         self.anno = int(anno)
         if str(numero).isdigit():
             self.numero = int(numero)
@@ -83,7 +85,8 @@ class Unico:
 
     @staticmethod
     def header_names():
-        return ['id',
+        return ['block',
+                'row',
                 'anno',
                 'numero',
                 'codice_fiscale',
