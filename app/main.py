@@ -54,8 +54,6 @@ def _convert_to_unico(items, file_csv):
     summary.number_invoices = count_item
     summary.total_amount = total_amount
 
-    fileUtils.move_file(file_output, str(file_output).replace('temp', 'processed'))
-
 
 def _process_cleannig_csv(directory):
 
@@ -74,6 +72,10 @@ def _process_cleannig_csv(directory):
             items = Client.load_from_csv(path_file_working, header=True)
 
             _convert_to_unico(_cleannig_duplicates(items).items(), file_csv)
+
+            fileUtils.move_file(path_file_working, str(path_file_working).replace('working', 'worked'))
+            
+        fileUtils.move_file(file_output, str(file_output).replace('temp', 'processed'))
 
 
 if __name__ == '__main__':
