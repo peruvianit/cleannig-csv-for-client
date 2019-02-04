@@ -2,6 +2,7 @@
 
 import os
 import os.path
+import shutil
 
 class FileUtils:
 
@@ -27,3 +28,6 @@ class FileUtils:
 
     def existFile(self, path):
         return os.path.isfile(path)
+
+    def move_file(self, path_origin, path_destination):
+        shutil.move(path_origin,path_destination)
