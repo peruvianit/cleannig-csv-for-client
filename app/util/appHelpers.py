@@ -5,7 +5,7 @@ import datetime
 
 class AppHelpers:
 
-    def generate_sufix_file(self):
+    def generate_prefix_file(self):
         date_now = f"{datetime.datetime.now():%Y%m%d}"
         time_now = f"{datetime.datetime.now():%H%M%S}"
 
