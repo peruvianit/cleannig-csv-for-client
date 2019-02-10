@@ -25,12 +25,8 @@ file_output_details = 'data/temp/{}cleaning-csv-details.csv'.format(prefix_file)
 def _cleannig_duplicates(items):
     items_cleaned = {}
 
-    count_item = 0
     for item in items:
-        count_item += 1
         items_cleaned[item['fattura']] = item
-
-    summary.rows_worked = count_item
 
     return items_cleaned
 
@@ -41,6 +37,8 @@ def _load_all_rows(items):
     for item in items:
         count_item += 1
         items_loaded[count_item] = item
+
+    summary.rows_worked = count_item
 
     return items_loaded
 
@@ -65,7 +63,6 @@ def _convert_to_unico(items, file_csv):
             total_amount += float(unico.importo.replace('.','').replace(',','.'))
             writer.writerow(unico.__dict__)
 
-    summary.number_invoices = count_item
     summary.total_amount = total_amount
 
 
@@ -73,7 +70,6 @@ def _create_details_unico(items, file_csv):
     mapperObject = MapperObject()
 
     count_item = 0
-   # total_amount = 0
 
     exist_file = not fileUtils.existFile(file_output_details)
 
@@ -88,8 +84,7 @@ def _create_details_unico(items, file_csv):
             unicoDetail = mapperObject.client_to_unicoDetail(count_item, val, file_csv)
             writer.writerow(unicoDetail.__dict__)
 
-#    summary.number_invoices = count_item
-#    summary.total_amount = total_amount
+    summary.number_invoices = count_item
 
 
 def _process_cleannig_csv(directory):
