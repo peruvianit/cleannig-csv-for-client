@@ -107,11 +107,15 @@ class Client:
 
             row_number = 0
             for row in spamreader:
-                row_number+=1
+                row_number += 1
 
-                if ( row_number == 1 and header):
+                if row_number == 1 and header:
                     continue
                 # Load Model
+
+                if row[0] == "#":
+                    continue
+
                 client_model = cls(row[0],
                                 row[1],
                                 row[2],
