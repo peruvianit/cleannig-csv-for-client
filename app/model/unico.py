@@ -57,7 +57,7 @@ class Unico:
         self.importo = importo
         self.tipo_documento = tipo_documento
         self.num_doc = num_doc
-        self.data_doc = data_doc
+        self.data_doc = data_doc.replace("-", "/")
         self.file = file
         self.utenza_telecom = utenza_telecom
         self.localita_impianto = localita_impianto
